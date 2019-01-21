@@ -1,10 +1,10 @@
 
 /**
- * delete the middle Node of a LinkedList(mid=floor(length/2))
+ * reverse a LinkedList
  * @author PC
  *
  */
-public class DeleteMidNode {
+public class ReverseLinkedList {
 	
 	private static class Node
 	{
@@ -17,24 +17,20 @@ public class DeleteMidNode {
 		}
 	}
 	
-	public static Node deleteMidNode(Node head)
+	public static Node reverseList(Node head)
 	{
-		if(head==null||head.next==null)
+		if(head==null)return head;
+		Node cursion=head;
+		Node aux=null;
+		head=null;
+		
+		while(cursion!=null)
 		{
-			return head;
+			aux=cursion.next;
+			cursion.next=head;
+			head=cursion;
+			cursion=aux;
 		}
-		if(head.next.next==null)
-		{
-			head=head.next;
-		}
-		Node target=head;
-		Node judge=head.next.next;
-		while(judge.next!=null&&judge.next.next!=null)
-		{
-			target=target.next;
-			judge=judge.next.next;
-		}
-		target.next=target.next.next;
 		
 		return head;
 	}
@@ -54,8 +50,8 @@ public class DeleteMidNode {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//test data
-		Node head=DeleteMidNode.createList();
-		DeleteMidNode.deleteMidNode(head);
+		Node head=ReverseLinkedList.createList();
+		head=ReverseLinkedList.reverseList(head);
 		while(head!=null)
 		{
 			System.out.print(head.value+" ");
