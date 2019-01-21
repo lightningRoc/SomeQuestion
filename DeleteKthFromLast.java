@@ -19,11 +19,11 @@ public class DeleteKthFromLast {
 		}
 	}
 	
-	public static void deleteKthLastNode(Node head,int k)
+	public static Node deleteKthLastNode(Node head,int k)
 	{
 		if(head==null||k<1)
 		{
-			return;
+			return head;
 		}
 		
 		Node n=head;
@@ -45,6 +45,8 @@ public class DeleteKthFromLast {
 			}
 			n.next=n.next.next;
 		}
+		
+		return head;
 	}
 	
 	public static Node createList()
